@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DiDongOnline.Models.LOAISANPHAM>
+<div class="header_bottom_left">
+    <div class="categories">
+        <ul>
+            <h3>Loại Sản Phẩm</h3>
+            @foreach (var item in Model)
+            {
+                <li><a href="@Url.Action("ProductsType","DiDongOnline", new {id = item.MaLoaiSP})" class="list-group-item"> @item.TenLoaiSP</a></li>
+            }
+        </ul>
+    </div>
+</div>
+

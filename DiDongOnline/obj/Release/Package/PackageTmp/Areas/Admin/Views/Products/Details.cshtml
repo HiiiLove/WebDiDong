@@ -1,0 +1,73 @@
+﻿@model DiDongOnline.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+<h2 style="text-align:left;height:100px">Chi tiết Sản Phẩm</h2>
+<div style="margin-left:auto;margin-right:auto">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phẩm:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenSanPham)
+        </dd>
+        <dt>
+            Mô tả:
+        </dt>
+        <dd>
+            @Html.Raw(@Model.MoTa.ToString().Replace("\n",
+            "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </dd>
+        <dt>
+            Ảnh bìa:
+        </dt>
+        <dd>
+            <img src="~/Images/@Model.AnhBia" alt=" @Model.TenSanPham">
+        </dd>
+        <dt>
+            Ngày cập nhật:
+        </dt>
+        <dd>
+            @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")
+        </dd>
+        <dt>
+            Số lượng bán:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongBan)
+        </dd>
+        <dt>
+            Giá bán:
+        </dt>
+        <dd>
+            @Html.FormatValue(@Model.GiaBan, "{0:#,##0}") VNĐ
+        </dd>
+
+        <dt>
+            Kiểu loại:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LOAISANPHAM.TenLoaiSP)
+        </dd>
+        <dt>
+            Nhà sản xuất:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NHASANXUAT.TenNSX)
+        </dd>
+    </dl>
+</div>
+<p style="margin-left:auto;">
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaSanPham }) |
+    @Html.ActionLink("Về trang quản lý sản phẩm", "Index")
+</p>

@@ -1,0 +1,32 @@
+﻿<div class="content">
+    <div class="content_bottom">
+
+            <div class="content_bottom">
+                <div class="heading">
+                    <h3>Sản phẩm bán chạy</h3>
+                </div>
+                <div class="see">
+                    <p><a href="@Url.Action("AllProducts","DiDongOnline")">Xem tất cả sản phẩm</a></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="section group">
+                @foreach (var sp in Model)
+                {
+                    <div class="grid_1_of_4 images_1_of_4" style="height:360px;width:240px">
+                        <a href="@Url.Action("ProductsDetail", "DiDongOnline", new { id = sp.MaSanPham })"><img src="~/images/@sp.AnhBia" alt="" /></a>
+                        <h2>@sp.TenSanPham </h2>
+                        <div class="price-details">
+                            <div class="price-number">
+                                <p><span class="rupees">@Html.FormatValue(sp.GiaBan, "{0:#,##0}")</span></p>
+                            </div>
+                            <div class="add-cart">
+                                <h4><a href="@Url.Action("ThemGioHang","GioHang", new { ms = sp.MaSanPham, url =Request.Url.ToString() })">Thêm vào Giỏ Hàng</a></h4>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+    </div>
+</div>

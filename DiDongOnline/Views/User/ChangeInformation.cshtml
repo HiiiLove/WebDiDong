@@ -1,0 +1,76 @@
+﻿@model DiDongOnline.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "ChangeInformation";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 style="text-align:left;height:100px">Thay đổi thông tin cá nhân</h2>
+
+@using (Html.BeginForm("ChangeInformation", "User", FormMethod.Post, new
+{
+    @enctype =
+"multipart/form-data"
+}))
+{
+    @Html.AntiForgeryToken()
+    <div style="margin-left:auto;margin-right:auto" class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Mã khách hàng:</label>
+            <div class="col-md-10">
+                @*Chỉ hiển thị mã sách không cho sửa*@
+                <input type="text" size="70" name="iMaKH" value="@Model.MaKH" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tài khoản:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="sTaikhoan" value="@Model.TaiKhoan" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên khách hàng:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="sHoTen" value="@Model.HoTen" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Mật khẩu:</label>
+            <div class="col-md-10">
+                <input type="password" size="70" name="sMatkhau" value="@Model.MatKhau" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Email:</label>
+            <div class="col-md-10">
+                <input type="email" size="70" name="sEmail" value="@Model.Email" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Địa chỉ:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="sDiaChi" value="@Model.DiaChi" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Điện thoại:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="sDienThoai" value="@Model.DienThoai" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Ngày sinh:</label>
+            <div class="col-md-10">
+                <input type="datetime" name="dNgaySinh" required
+                       value="@Convert.ToDateTime(Model.NgaySinh)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="LƯU THÔNG TIN" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

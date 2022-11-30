@@ -1,0 +1,31 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Dark Login Form</title>
+    <link rel="stylesheet" href="~/FileContentAdmin/css/style.css">
+    <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+    <form action="~/Admin/Home/Login" method="post" class="login">
+        <h4 style="text-align:center;font-weight:bold">LOGIN ADMIN</h4>
+        <p>
+            <label for="login">Username</label>
+            <input type="text" tabindex="1" name="UserName" id="login" placeholder="Type your username" required>
+        </p>
+
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" tabindex="2" name="Password" placeholder="Type yourpassword" required>
+        </p>
+        <p style="font-style:italic; color:red; margin:0px;">@ViewBag.ThongBao</p>
+
+        <p class="login-submit">
+            <button type="submit" class="login-button" tabindex="4">Login</button>
+        </p>
+    </form>
+</body>
+</html>

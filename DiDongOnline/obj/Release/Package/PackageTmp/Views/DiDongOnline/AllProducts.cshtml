@@ -1,0 +1,37 @@
+﻿@using DiDongOnline.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SANPHAM>
+@{
+    ViewBag.Title = "AllProducts";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 style="font-size:30px">Tất cả sản phẩm</h2>
+<hr />
+<div class="section group">
+    @foreach (var sp in Model)
+    {
+        <div class="grid_1_of_4 images_1_of_4" style="height:360px;width:240px">
+            <a href="@Url.Action("ProductsDetail", "DiDongOnline", new { id = sp.MaSanPham })"><img src="~/images/@sp.AnhBia" alt="" /></a>
+            <h2>@sp.TenSanPham</h2>
+            <div class="price-details">
+                <div class="price-number">
+                    <p><span class="rupees">@Html.FormatValue(sp.GiaBan, "{0:#,##0}")</span></p>
+                </div>
+                <div class="add-cart">
+                    <h4><a href="@Url.Action("ThemGioHang","GioHang", new { ms = sp.MaSanPham, url =Request.Url.ToString() })">Thêm vào Giỏ Hàng</a></h4>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    }
+</div>
+@*Tạo liên kết các trang*@
+Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">@Html.PagedListPager(Model, page => Url.Action("AllProducts", new { page = page }))</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>
